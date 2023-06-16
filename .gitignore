@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+data/
+
+testing.ipynb
+
 # Distribution / packaging
 .Python
 build/
