@@ -8,8 +8,8 @@ import pandas as pd
 
 class Booster:
 
-    def __init__(self, name, description, frame_id, booster_id=None):
-        self.frame_id = frame_id
+    def __init__(self, name, description, store_id, booster_id=None):
+        self.store_id = store_id
         self.features = []
         self.aliases = []
         self.metadata = self._fetch_meta()
@@ -19,7 +19,7 @@ class Booster:
 
     def _fetch_local_meta(self):
         # fetch metadata from datastore
-        with open(f"datastore/{self.frame_id}/metadata.json", "r") as f:
+        with open(f"datastore/{self.store_id}/metadata.json", "r") as f:
             metadata = json.load(f)
 
         return metadata
@@ -30,7 +30,7 @@ class Booster:
             # fetch metadata from datastore
             response = client.client.get_object(
                 Bucket=client.store_name,
-                Key=f'datastore/{self.frame_id}/metadata.json'
+                Key=f'datastore/{self.store_id}/metadata.json'
                 )
 
             file_content = response['Body'].read().decode('utf-8')
@@ -44,11 +44,11 @@ class Booster:
             return None
         
         if booster_id not in [i.split(".")[0] for i in os.listdir(
-            f"datastore/{self.frame_id}/boosters/")]:
+            f"datastore/{self.store_id}/boosters/")]:
 
             raise ValueError(f"Booster {booster_id} not found.")
 
-        path = f"datastore/{self.frame_id}/boosters/{booster_id}.json"
+        path = f"datastore/{self.store_id}/boosters/{booster_id}.json"
         with open(path, "r") as f:
             self.features = json.load(f)
             self.aliases = [i["alias"] for i in self.features]
@@ -63,7 +63,7 @@ class Booster:
             # fetch metadata from datastore
             response = client.client.get_object(
                 Bucket=client.store_name,
-                Key=f'datastore/{self.frame_id}/boosters/{booster_id}.json'
+                Key=f'datastore/{self.store_id}/boosters/{booster_id}.json'
                 )
             
             file_content = response['Body'].read().decode('utf-8')
@@ -147,7 +147,7 @@ class Booster:
 
     def _local_booster_store(self):
         _id = str(uuid.uuid4())
-        path = f"datastore/{self.frame_id}/boosters"
+        path = f"datastore/{self.store_id}/boosters"
         if not os.path.exists(path):
             os.makedirs(path)
 
@@ -157,11 +157,11 @@ class Booster:
     def upload(self):
         try:
             _id = str(uuid.uuid4())
-            path = f"datastore/{self.frame_id}/boosters"
+            path = f"datastore/{self.store_id}/boosters"
 
             body = {
                 "booster_id": _id,
-                "frame_id": self.frame_id,
+                "store_id": self.store_id,
                 "name": self.name,
                 "description": self.description,
                 "features": self.features
@@ -187,7 +187,7 @@ class Booster:
                 file = [i for i in self.metadata["files"] if \
                         i["id"] == feature["file_id"]][0]
                 
-                df = pd.read_csv(f"datastore/{self.frame_id}/{file['id']}.csv")
+                df = pd.read_csv(f"datastore/{self.store_id}/{file['id']}.csv")
                 ser = df[feature["name"]]
 
                 df_out = pd.DataFrame({
@@ -200,7 +200,7 @@ class Booster:
                 file = [i for i in self.metadata["files"] if \
                         i["id"] == feature["file_id"]][0]
                 
-                df = pd.read_csv(f"datastore/{self.frame_id}/{file['id']}.csv")
+                df = pd.read_csv(f"datastore/{self.store_id}/{file['id']}.csv")
                 ser = df[feature["names"]].sum(axis=1)
                 
                 df_out = pd.DataFrame({
@@ -212,7 +212,7 @@ class Booster:
     def _load_csv(self, file_id):
         response = client.client.get_object(
             Bucket=client.store_name,
-            Key=f'datastore/{self.frame_id}/{file_id}.csv'
+            Key=f'datastore/{self.store_id}/{file_id}.csv'
             )
         
         file_content = response['Body'].read().decode('utf-8')
