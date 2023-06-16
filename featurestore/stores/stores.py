@@ -117,6 +117,6 @@ class BoosterStore:
 
         return {
                 "message": "success",
-                "frame_id": self.booster_metadata['id']
+                "store_id": self.booster_metadata['id']
                 }
     
