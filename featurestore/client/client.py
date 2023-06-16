@@ -33,7 +33,7 @@ class Client:
         if self.client is None:
             raise SystemExit('Client not instantiated.')
 
-    def list_datastores(self):
+    def list_stores(self):
         self.check_instantiated()
         
         # fetch metadata from datastore
