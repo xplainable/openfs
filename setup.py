@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-exec(open('featurestore/_version.py').read())
+exec(open('openfs/_version.py').read())
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -9,7 +9,7 @@ with open("LICENCE", "r") as fh:
     license = fh.read()
 
 setup(
-    name='featurestore',
+    name='openfs',
     packages=find_packages(),
     version=__version__,
     description='An S3 feature store client for data pipelines.',

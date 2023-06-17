@@ -1,4 +1,4 @@
-from featurestore import client
+from openfs import client
 import json
 import os
 import uuid

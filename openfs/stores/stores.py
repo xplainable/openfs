@@ -1,11 +1,11 @@
-from featurestore import client
+from openfs import client
 import json
 import os
 from datetime import datetime
 from io import StringIO
 import uuid
 
-class BoosterStore:
+class FeatureStore:
 
     def __init__(self, name, description, primary_key):
         self.name = name

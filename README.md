@@ -1,29 +1,29 @@
 
 <br></br>
 <div align="center">
-<h1 align="center">featurestore</h1>
+<h1 align="center">openfs</h1>
 <h3 align="center">An S3 feature store client for data pipelines.</h3>
     
-[![Python](https://img.shields.io/pypi/pyversions/featurestore)](https://pypi.org/project/featurestore/)
-[![PyPi](https://img.shields.io/pypi/v/featurestore?color=blue)](https://pypi.org/project/featurestore/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/xplainable/featurestore/blob/main/LICENSE)
-[![Downloads](https://static.pepy.tech/badge/featurestore)](https://pepy.tech/project/featurestore)
+[![Python](https://img.shields.io/pypi/pyversions/openfs)](https://pypi.org/project/openfs/)
+[![PyPi](https://img.shields.io/pypi/v/openfs?color=blue)](https://pypi.org/project/openfs/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/xplainable/openfs/blob/main/LICENSE)
+[![Downloads](https://static.pepy.tech/badge/openfs)](https://pepy.tech/project/openfs)
     
-**Featurestore** provides a simple api to boost the quality of your training data
+**Openfs** provides a simple api to boost the quality of your training data
 while keeping your data pipelines clean and manageable.
 </div>
 
 # Installation
 ```shell
-pip install featurestore
+pip install openfs
 ```
 
 ## Quick Start
 ### Creating a Store
 ``` python
-import featurestore as fs
-from featurestore.stores import BoosterStore
-from featurestore.boosters import Booster
+import openfs as fs
+from openfs.stores import FeatureStore
+from openfs.boosters import Booster
 import os
 
 # <- import files to upload here
@@ -37,7 +37,7 @@ fs.client.connect(
 )
 
 # Create store
-store = BoosterStore("store_name", "description of store", "some_primary_key")
+store = FeatureStore("store_name", "description of store", "some_primary_key")
 
 # Upload store
 response = store.upload(files, filenames)
@@ -71,7 +71,7 @@ fb.client.list_stores()
 <br></br>
 
 ## Contributors
-We'd love to welcome contributors to ``featurestore`` to help make training data
+We'd love to welcome contributors to ``openfs`` to help make training data
 richer and more open for everyone. We're working on our contributor docs at the
 moment, but if you're interested in contributing, please send us a message at
 contact@xplainable.io.
@@ -80,7 +80,7 @@ contact@xplainable.io.
 <div align="center">
 <br></br>
 <br></br>
-Thanks for trying featurestore!
+Thanks for trying openfs!
 <br></br>
 <strong>Made with ❤️ in Australia</strong>
 <br></br>

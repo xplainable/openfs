@@ -3,7 +3,7 @@ import platform
 import argparse
 
 # CONFIG
-package_name = 'featurestore'
+package_name = 'openfs'
 
 # Load arguments
 parser = argparse.ArgumentParser()
