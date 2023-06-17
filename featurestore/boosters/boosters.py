@@ -8,14 +8,14 @@ import pandas as pd
 
 class Booster:
 
-    def __init__(self, name, description, store_id, booster_id=None):
+    def __init__(self, store_id, booster_id=None):
         self.store_id = store_id
         self.features = []
         self.aliases = []
         self.metadata = self._fetch_meta()
         self.booster_id = self._load_booster(booster_id)
-        self.name = name
-        self.description = description
+        self.name = None
+        self.description = None
 
     def _fetch_local_meta(self):
         # fetch metadata from datastore
@@ -154,7 +154,10 @@ class Booster:
         with open(f"{path}/{_id}.json", "w") as f:
             json.dump(self.features, f)
 
-    def upload(self):
+    def upload(self, name: str, description: str):
+        self.name = name
+        self.description = description
+
         try:
             _id = str(uuid.uuid4())
             path = f"datastore/{self.store_id}/boosters"
