@@ -4,8 +4,11 @@ try:
     from IPython.display import display, Code
     from ipywidgets import interactive
 except ImportError:
-    print("Optional dependencies are available. Use `pip install openfs[gui]` \
-          to use the gui.")
+    print(
+        ("Optional dependencies are available. Use `pip install openfs[gui]`"
+        "to use the gui."
+        )
+        )
 
 def _gui_add(table_name, booster, metadata):
 
