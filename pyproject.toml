@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "openfs"
-version = "1.0.0"
+version = "1.0.1"
 authors = [
   { name="xplainable pty ltd", email="contact@xplainable.io" },
 ]
@@ -24,8 +24,11 @@ classifiers = [
 dependencies = [
         "boto3>=1.26.154",
         "botocore>=1.29.154",
-        "ipython>=8.14.0",
-        "ipywidgets>=8.0.0",
         "pandas>=1.2.0"
     ]
-  
+
+[project.optional-dependencies]
+gui = [
+  "ipywidgets>=8.0.0",
+  "ipython"
+]

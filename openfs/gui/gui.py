@@ -1,8 +1,11 @@
-import ipywidgets as widgets
 import time
-from ipywidgets import interactive
-from IPython.display import display, Code
-
+try:
+    import ipywidgets as widgets
+    from IPython.display import display, Code
+    from ipywidgets import interactive
+except ImportError:
+    print("Optional dependencies are available. Use `pip install openfs[gui]` \
+          to use the gui.")
 
 def _gui_add(table_name, booster, metadata):
 
