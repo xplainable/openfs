@@ -1,8 +1,25 @@
-# featurestore
-An S3 feature store client for data pipelines
 
-# Quick Start
-## Creating a Store
+<br></br>
+<div align="center">
+<h1 align="center">featurestore</h1>
+<h3 align="center">An S3 feature store client for data pipelines.</h3>
+    
+[![Python](https://img.shields.io/pypi/pyversions/featurestore)](https://pypi.org/project/featurestore/)
+[![PyPi](https://img.shields.io/pypi/v/featurestore?color=blue)](https://pypi.org/project/featurestore/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/xplainable/featurestore/blob/main/LICENSE)
+[![Downloads](https://static.pepy.tech/badge/featurestore)](https://pepy.tech/project/featurestore)
+    
+**Featurestore** provides a simple api to boost the quality of your training data
+while keeping your data pipelines clean and manageable.
+</div>
+
+# Installation
+```shell
+pip install featurestore
+```
+
+## Quick Start
+### Creating a Store
 ``` python
 import featurestore as fs
 from featurestore.stores import BoosterStore
@@ -26,7 +43,7 @@ store = BoosterStore("store_name", "description of store", "some_primary_key")
 response = store.upload(files, filenames)
 ```
 
-## Creating a Booster Dataset
+### Creating a Booster Dataset
 ``` python
 # Create booster
 booster = Booster(
@@ -45,8 +62,29 @@ df = booster.create_df()
 booster.upload()
 ```
 
-## Viewing Stores
+### Viewing Stores
 
 ```python
 fb.client.list_stores()
 ```
+
+<br></br>
+
+## Contributors
+We'd love to welcome contributors to ``featurestore`` to help make training data
+richer and more open for everyone. We're working on our contributor docs at the
+moment, but if you're interested in contributing, please send us a message at
+contact@xplainable.io.
+
+
+<div align="center">
+<br></br>
+<br></br>
+Thanks for trying featurestore!
+<br></br>
+<strong>Made with ❤️ in Australia</strong>
+<br></br>
+<hr>
+&copy; copyright xplainable pty ltd
+</div>
+
