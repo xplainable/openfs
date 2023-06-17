@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "featurestore"
+version = "1.0.0"
+authors = [
+  { name="xplainable pty ltd", email="contact@xplainable.io" },
+]
+description = "An S3 feature store client for data pipelines."
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.8"
+
+classifiers = [
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+        "boto3>=1.26.154",
+        "botocore>=1.29.154",
+        "ipython>=8.14.0",
+        "ipywidgets>=8.0.0",
+        "pandas>=1.2.0"
+    ]
+  
