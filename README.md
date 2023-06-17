@@ -46,10 +46,7 @@ response = store.upload(files, filenames)
 ### Creating a Booster Dataset
 ``` python
 # Create booster
-booster = Booster(
-    name="booster_name",
-    description="booster description",
-    store_id=response['store_id'])
+booster = Booster(store_id=response['store_id'])
 
 # Add features
 booster.add_single("feature_1", alias="alias_for_feature")
@@ -59,7 +56,7 @@ booster.add_group(["feature_2", "feature_3"], alias="grouped_feature", how='sum'
 df = booster.create_df()
 
 # upload booster
-booster.upload()
+booster.upload(name="booster_name", description="booster description")
 ```
 
 ### Viewing Stores
